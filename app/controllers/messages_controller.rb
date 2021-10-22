@@ -1,30 +1,30 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :update, :destroy]
 
-  # GET /messages
+  # GET /chats/1/messages
   def index
     @messages = Message.where(chat_id: params[:chat_id])
 
     render json: @messages
   end
 
-  # GET /messages/1
+  # GET /chats/1/messages/1
   def show
     render json: @message
   end
 
-  # POST /messages
+  # POST /chats/1/messages
   def create
-    @message = Message.new(message_params)
+    @message = Message.new(message_params.merge(params.permit(:chat_id)))
 
     if @message.save
-      render json: @message, status: :created, location: @message
+      render json: @message, status: :created, location: chat_message_url(id: @message.id)
     else
       render json: @message.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /messages/1
+  # PATCH/PUT /chats/1/messages/1
   def update
     if @message.update(message_params)
       render json: @message
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
     end
   end
 
-  # DELETE /messages/1
+  # DELETE /chats/1/messages/1
   def destroy
     @message.destroy
   end
@@ -46,6 +46,6 @@ class MessagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:text, :user_id, :chat_id)
+      params.require(:message).permit(:text, :user_id)
     end
 end
