@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.all
+    @messages = Message.where(chat_id: params[:chat_id])
 
     render json: @messages
   end
