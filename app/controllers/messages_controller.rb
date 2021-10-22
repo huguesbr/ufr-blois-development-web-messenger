@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :set_chat
   before_action :set_message, only: [:show, :update, :destroy]
 
   # GET /chats/1/messages
@@ -15,7 +16,7 @@ class MessagesController < ApplicationController
 
   # POST /chats/1/messages
   def create
-    @message = Message.new(message_params.merge(params.permit(:chat_id)))
+    @message = @chat.messages.new(message_params)
 
     if @message.save
       render json: @message, status: :created, location: chat_message_url(id: @message.id)
@@ -40,8 +41,13 @@ class MessagesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_chat
+      @chat = Chat.find(params[:chat_id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = Message.find(params[:id])
+      @message = @chat.messages.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
