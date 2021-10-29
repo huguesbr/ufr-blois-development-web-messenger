@@ -33,14 +33,17 @@ class UsersController < ApplicationController
         render json: @user.errors, status: :unprocessable_entity
       end
     else
-
       render nothing: true, status: 401
     end
   end
 
   # DELETE /users/1
   def destroy
-    @user.destroy
+    if current_user_id == @user.id
+      @user.destroy
+    else
+      render nothing: true, status: 401
+    end
   end
 
   private
