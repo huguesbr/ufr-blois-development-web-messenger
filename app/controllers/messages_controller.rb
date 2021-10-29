@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_chat
   before_action :set_message, only: [:show, :update, :destroy]
+  before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /chats/1/messages
   def index
@@ -40,6 +41,10 @@ class MessagesController < ApplicationController
   end
 
   private
+    def verify_authorization
+      raise UnauthorizedError if @message.user_id != current_user_id
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_chat
       @chat = Chat.find(params[:chat_id])

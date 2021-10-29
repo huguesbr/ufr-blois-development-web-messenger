@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /users
   def index
@@ -26,27 +27,23 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if current_user_id == @user.id
-      if @user.update(user_params)
-        render json: @user
-      else
-        render json: @user.errors, status: :unprocessable_entity
-      end
+    if @user.update(user_params)
+      render json: @user
     else
-      render nothing: true, status: 401
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
   # DELETE /users/1
   def destroy
-    if current_user_id == @user.id
-      @user.destroy
-    else
-      render nothing: true, status: 401
-    end
+    @user.destroy
   end
 
   private
+    def verify_authorization
+      raise UnauthorizedError if @user.id != current_user_id
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
