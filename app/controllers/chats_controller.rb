@@ -1,5 +1,6 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:show, :update, :destroy]
+  before_action :verify_user_presence, only: [:index, :show, :create]
   before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /chats
@@ -40,6 +41,10 @@ class ChatsController < ApplicationController
   end
 
   private
+    def verify_user_presence
+      raise UnauthorizedError unless current_user_id
+    end
+
     def verify_authorization
       raise UnauthorizedError if @chat.user_id != current_user_id
     end

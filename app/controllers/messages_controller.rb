@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_chat
   before_action :set_message, only: [:show, :update, :destroy]
+  before_action :verify_user_presence, only: [:index, :show, :create]
   before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /chats/1/messages
@@ -41,7 +42,11 @@ class MessagesController < ApplicationController
   end
 
   private
-    def verify_authorization
+    def verify_user_presence
+      raise UnauthorizedError unless current_user_id
+    end
+
+  def verify_authorization
       raise UnauthorizedError if @message.user_id != current_user_id
     end
 
