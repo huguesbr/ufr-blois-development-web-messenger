@@ -16,6 +16,27 @@ bin/rails server
 - launch postman
 - import `Messenger.postman_collection.json` (File > import)
 
+## Console
+
+```
+bin/rails console
+> User.all
+> app.get '/chats'
+```
+
+## SQL Console
+
+```
+bin/rails dbconsole
+> select * from users
+```
+
+## Logs
+
+```
+tail -f log/development.log
+```
+
 ## Checkout version of a specific TD
 
 ```
