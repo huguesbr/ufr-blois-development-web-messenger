@@ -18,7 +18,11 @@ class MembershipsController < ApplicationController
 
   # POST /memberships
   def create
-    @membership = Membership.new(membership_create_params)
+    # https://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_initialize_by
+    # attempt to find the membership
+    # return the membership if found
+    # return a new membership otherwise
+    @membership = Membership.find_or_initialize_by(membership_create_params)
 
     if @membership.save
       render json: @membership, status: :created, location: @membership
