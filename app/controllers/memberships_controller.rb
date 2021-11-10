@@ -47,11 +47,11 @@ class MembershipsController < ApplicationController
 
   private
     def verify_chat_owner_authorization
-      raise UnauthorizedError unless @membership.chat.user_id == current_user_id
+      raise UnauthorizedError unless @membership.chat.user_id == current_user.id
     end
 
     def verify_membership_owner_authorization
-      raise UnauthorizedError unless @membership.user_id == current_user_id
+      raise UnauthorizedError unless @membership.user_id == current_user.id
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -63,7 +63,7 @@ class MembershipsController < ApplicationController
     def membership_create_params
       membership_create_params = params.require(:membership).permit(:chat_id)
       # force the membership creator to be the current user
-      membership_create_params.merge(user_id: current_user_id)
+      membership_create_params.merge(user_id: current_user.id)
     end
 
     # Only allow a trusted parameter "white list" through.

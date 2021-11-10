@@ -42,7 +42,7 @@ class ChatsController < ApplicationController
 
   private
     def verify_authorization
-      raise UnauthorizedError if @chat.user_id != current_user_id
+      raise UnauthorizedError if @chat.user_id != current_user.id
     end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -54,6 +54,6 @@ class ChatsController < ApplicationController
     def chat_params
       chat_params = params.require(:chat).permit(:name)
       # force the chat creator to be the current user
-      chat_params.merge(user_id: current_user_id)
+      chat_params.merge(user_id: current_user.id)
     end
 end
