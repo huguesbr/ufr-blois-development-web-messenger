@@ -13,4 +13,8 @@ class ApplicationController < ActionController::API
   def current_user_id
     @current_user_id ||= params[:current_user_id]&.to_i
   end
+
+  def verify_user_presence
+    raise UnauthorizedError unless current_user_id
+  end
 end

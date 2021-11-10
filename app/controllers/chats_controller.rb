@@ -41,10 +41,6 @@ class ChatsController < ApplicationController
   end
 
   private
-    def verify_user_presence
-      raise UnauthorizedError unless current_user_id
-    end
-
     def verify_authorization
       raise UnauthorizedError if @chat.user_id != current_user_id
     end
