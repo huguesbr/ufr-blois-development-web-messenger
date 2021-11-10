@@ -1,5 +1,8 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:show, :update, :destroy]
+  before_action :verify_user_presence, only: [:create, :update, :destroy]
+  before_action :verify_chat_owner_authorization, only: [:update]
+  before_action :verify_membership_owner_authorization, only: [:destroy]
 
   # GET /memberships
   def index
@@ -15,7 +18,7 @@ class MembershipsController < ApplicationController
 
   # POST /memberships
   def create
-    @membership = Membership.new(membership_params)
+    @membership = Membership.new(membership_create_params)
 
     if @membership.save
       render json: @membership, status: :created, location: @membership
@@ -26,7 +29,7 @@ class MembershipsController < ApplicationController
 
   # PATCH/PUT /memberships/1
   def update
-    if @membership.update(membership_params)
+    if @membership.update(membership_update_params)
       render json: @membership
     else
       render json: @membership.errors, status: :unprocessable_entity
@@ -39,13 +42,32 @@ class MembershipsController < ApplicationController
   end
 
   private
+    def verify_user_presence
+      raise UnauthorizedError unless current_user_id
+    end
+
+    def verify_chat_owner_authorization
+      raise UnauthorizedError unless @membership.chat.user_id == current_user_id
+    end
+
+    def verify_membership_owner_authorization
+      raise UnauthorizedError unless @membership.user_id == current_user_id
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_membership
       @membership = Membership.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def membership_params
-      params.require(:membership).permit(:chat_id, :user_id)
+    def membership_create_params
+      membership_create_params = params.require(:membership).permit(:chat_id)
+      # force the membership creator to be the current user
+      membership_create_params.merge(user_id: current_user_id)
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def membership_update_params
+      params.require(:membership).permit(:status)
     end
 end
