@@ -13,10 +13,19 @@ end
 
 # creating some chats
 %w(Development Fun Random).each do |name|
+  # creating a chat, will also create a membership for the chat owner
+  # `after_create`
   Chat.create(name: name, user: User.all.sample)
 end
 
 # creating some messages
 ['Hello, world', "What's up", "How are you?", "Coming tonight?", "No", "Yes"].each do |text|
   Message.create(chat: Chat.all.sample, user: User.all.sample, text: text)
+end
+
+# ensure that each chat's message owner have a membership
+Message.all.each do |message|
+  # https://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_create_by
+  # Finds the first record with the given attributes, or creates a record with the attributes if one is not found
+  Membership.find_or_create_by(chat_id: message.chat_id, user_id: message.user_id)
 end
