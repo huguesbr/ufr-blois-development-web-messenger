@@ -53,8 +53,8 @@ class MessagesController < ApplicationController
 
     def verify_membership
       # https://apidock.com/rails/ActiveRecord/Base/exists%3F/class
-      # check that a membership exist for current user / chat
-      raise UnauthorizedError unless Membership.exists?(chat: @chat, user_id: current_user_id)
+      # check that an accepted membership exist for current user / chat
+      raise UnauthorizedError unless Membership.exists?(chat: @chat, user_id: current_user_id, status: 'accepted')
     end
 
     # Use callbacks to share common setup or constraints between actions.
