@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_131555) do
+ActiveRecord::Schema.define(version: 2021_11_10_134637) do
 
   create_table "chats", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_11_10_131555) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["chat_id"], name: "index_memberships_on_chat_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
