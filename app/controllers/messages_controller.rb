@@ -62,6 +62,8 @@ class MessagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:text, :user_id)
+      message_params = params.require(:message).permit(:text)
+      # force the message creator to be the current user
+      message_params.merge(user_id: current_user_id)
     end
 end
