@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
   before_action :set_chat
   before_action :set_message, only: [:show, :update, :destroy]
-  before_action :verify_user_presence, only: [:index, :show, :create]
+  before_action :verify_user_presence
+  before_action :verify_membership
   before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /chats/1/messages
@@ -48,6 +49,12 @@ class MessagesController < ApplicationController
 
     def verify_authorization
       raise UnauthorizedError if @message.user_id != current_user_id
+    end
+
+    def verify_membership
+      # https://apidock.com/rails/ActiveRecord/Base/exists%3F/class
+      # check that a membership exist for current user / chat
+      raise UnauthorizedError unless Membership.exists?(chat: @chat, user_id: current_user_id)
     end
 
     # Use callbacks to share common setup or constraints between actions.
