@@ -27,5 +27,5 @@ end
 Message.all.each do |message|
   # https://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_create_by
   # Finds the first record with the given attributes, or creates a record with the attributes if one is not found
-  Membership.find_or_create_by(chat_id: message.chat_id, user_id: message.user_id)
+  Membership.find_or_create_by(chat_id: message.chat_id, user_id: message.user_id, status: 'accepted')
 end
