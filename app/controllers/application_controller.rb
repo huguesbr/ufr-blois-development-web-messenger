@@ -7,7 +7,10 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    @current_user ||= User.find(current_user_id)
+    # https://apidock.com/rails/v4.0.2/ActiveRecord/FinderMethods/find_by
+    # find_by(id: ) will return nil if user not found
+    # find(id) will raise an error if user not found
+    @current_user ||= User.find_by(id: current_user_id)
   end
 
   def current_user_id
@@ -15,6 +18,6 @@ class ApplicationController < ActionController::API
   end
 
   def verify_user_presence
-    raise UnauthorizedError unless current_user_id
+    raise UnauthorizedError unless current_user
   end
 end
