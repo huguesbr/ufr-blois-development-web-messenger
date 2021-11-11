@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
 
   private
     def verify_chat_owner_authorization
-      raise UnauthorizedError unless @membership.chat.user_id == current_user.id
+      raise UnauthorizedError unless @membership.editable_by?(current_user)
     end
 
     def verify_membership_owner_authorization
