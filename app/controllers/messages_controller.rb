@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
 
   private
     def verify_authorization
-      raise UnauthorizedError if @message.user_id != current_user.id
+      raise UnauthorizedError unless @message.belongs_to?(current_user)
     end
 
     def verify_membership
