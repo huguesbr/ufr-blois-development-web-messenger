@@ -42,7 +42,7 @@ class ChatsController < ApplicationController
 
   private
     def verify_authorization
-      raise UnauthorizedError if @chat.user_id != current_user.id
+      raise UnauthorizedError unless @chat.belongs_to?(current_user)
     end
 
   # Use callbacks to share common setup or constraints between actions.
