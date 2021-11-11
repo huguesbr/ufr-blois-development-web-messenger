@@ -51,7 +51,7 @@ class MembershipsController < ApplicationController
     end
 
     def verify_membership_owner_authorization
-      raise UnauthorizedError unless @membership.user_id == current_user.id
+      raise UnauthorizedError unless @membership.belongs_to?(current_user)
     end
 
     # Use callbacks to share common setup or constraints between actions.
