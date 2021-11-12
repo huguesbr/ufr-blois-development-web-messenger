@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :memberships
   resources :chats do
     resources :messages
   end

@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
   before_action :set_chat
   before_action :set_message, only: [:show, :update, :destroy]
-  before_action :verify_user_presence, only: [:index, :show, :create]
+  before_action :verify_user_presence
+  before_action :verify_membership
   before_action :verify_authorization, only: [:update, :destroy]
 
   # GET /chats/1/messages
@@ -42,12 +43,14 @@ class MessagesController < ApplicationController
   end
 
   private
-    def verify_user_presence
-      raise UnauthorizedError unless current_user_id
+    def verify_authorization
+      raise UnauthorizedError unless @message.belongs_to?(current_user)
     end
 
-    def verify_authorization
-      raise UnauthorizedError if @message.user_id != current_user_id
+    def verify_membership
+      # https://apidock.com/rails/ActiveRecord/Base/exists%3F/class
+      # check that an accepted membership exist for current user / chat
+      raise UnauthorizedError unless @chat.has_accepted_member?(current_user)
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -62,6 +65,8 @@ class MessagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:text, :user_id)
+      message_params = params.require(:message).permit(:text)
+      # force the message creator to be the current user
+      message_params.merge(user_id: current_user.id)
     end
 end

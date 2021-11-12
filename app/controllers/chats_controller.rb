@@ -41,12 +41,8 @@ class ChatsController < ApplicationController
   end
 
   private
-    def verify_user_presence
-      raise UnauthorizedError unless current_user_id
-    end
-
     def verify_authorization
-      raise UnauthorizedError if @chat.user_id != current_user_id
+      raise UnauthorizedError unless @chat.belongs_to?(current_user)
     end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -56,6 +52,8 @@ class ChatsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def chat_params
-      params.require(:chat).permit(:name, :user_id)
+      chat_params = params.require(:chat).permit(:name)
+      # force the chat creator to be the current user
+      chat_params.merge(user_id: current_user.id)
     end
 end

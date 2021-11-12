@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   private
     def verify_authorization
-      raise UnauthorizedError if @user.id != current_user_id
+      raise UnauthorizedError if @user.id != current_user.id
     end
 
     # Use callbacks to share common setup or constraints between actions.
