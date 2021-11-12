@@ -3,18 +3,27 @@
 ## Rails App Setup
 ```
 cd ~/Developer
+# delete any previous version of the messenger repo
+rm -fr messenger
+# clone the messenger git repo
 git clone https://github.com/huguesbr/ufr-blois-development-web-messenger.git messenger
 cd messenger
+# install any dependencies
 bundle install --path="vendor/bundle"
+# reset the database to a clean state
 bin/rake db:migrate:reset
+# populate some dummy data in our database
 bin/rake db:seed
+# launch rails server
 bin/rails server
 ```
 
+> Test that your setup is working by navigating to http://localhost:3000
+
 ## Postman Setup
 
-- launch postman
-- import `Messenger.postman_collection.json` (File > import)
+- launch Postman (Accessories / Postman) 
+- import `~/Developer/messenger/Messenger.postman_collection.json` (File > import)
 
 ## Console
 
@@ -35,14 +44,4 @@ bin/rails dbconsole
 
 ```
 tail -f log/development.log
-```
-
-## Checkout version of a specific TD
-
-```
-git fetch --all --tags
-git checkout tags/td-06 -b td-06
-bundle install --path="vendor/bundle"
-bin/rake db:migrate:reset
-bin/rake db:seed
 ```
