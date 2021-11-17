@@ -8,7 +8,7 @@
 
 # creating some users
 %w(Hugues Talia Naelie Kian).each do |name|
-  User.create(name: name)
+  User.create(name: name, password: SecureRandom.hex(10))
 end
 
 # creating some chats
