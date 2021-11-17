@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :update, :destroy]
+  before_action :set_session, only: [:destroy]
+  before_action :verify_authorization, only: [:destroy]
 
   # POST /sessions
   def create
-    @session = Session.new(session_params)
+    user = User.find_by(user_credentials)
+    raise UnauthorizedError.new('Invalid credentials') unless user
+
+    @session = Session.new(user: user)
 
     if @session.save
       render json: @session, status: :created, location: @session
@@ -18,13 +22,16 @@ class SessionsController < ApplicationController
   end
 
   private
+    def user_credentials
+      params[:user].permit(:name, :password)
+    end
+
+    def verify_authorization
+      raise UnauthorizedError unless @session.user_id == current_user.id
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_session
       @session = Session.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def session_params
-      params.require(:session).permit(:user_id)
     end
 end

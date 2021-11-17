@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   # https://apidock.com/rails/ActiveSupport/Rescuable/ClassMethods/rescue_from
   rescue_from UnauthorizedError do |exception|
-    render nothing: true, status: 401
+    render json: { error: exception.message }, status: 401
   end
 
   def current_user
