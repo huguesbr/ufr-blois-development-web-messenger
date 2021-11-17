@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions
   resources :memberships
   resources :chats do
     resources :messages
