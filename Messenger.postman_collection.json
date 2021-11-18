@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/chats/1/messages?current_user_id=3",
+							"raw": "http://localhost:3000/chats/1/messages?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -27,8 +27,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "3"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -50,7 +50,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/chats/1/messages?current_user_id=3",
+							"raw": "http://localhost:3000/chats/1/messages?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -63,8 +63,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "3"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -77,7 +77,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/chats/1/messages/1?current_user_id=1",
+							"raw": "http://localhost:3000/chats/1/messages/1?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -91,8 +91,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "1"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -114,7 +114,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/chats/1/messages/14?current_user_id=1",
+							"raw": "http://localhost:3000/chats/1/messages/10?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -124,12 +124,12 @@
 								"chats",
 								"1",
 								"messages",
-								"14"
+								"10"
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "1"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -151,7 +151,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/chats/1/messages/9?current_user_id=2",
+							"raw": "http://localhost:3000/chats/1/messages/9?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -165,8 +165,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "2"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -184,7 +184,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/chats?current_user_id=1",
+							"raw": "http://localhost:3000/chats?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -195,8 +195,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "1"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -218,7 +218,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/chats?current_user_id=2",
+							"raw": "http://localhost:3000/chats?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -229,8 +229,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "2"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -344,7 +344,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/users?current_user_id=3",
+							"raw": "http://localhost:3000/users?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -355,8 +355,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "3"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -370,7 +370,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Hugues Bernet-Rollande\"\n}",
+							"raw": "{\n    \"name\": \"Somebody\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -418,7 +418,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Somebody\"\n}",
+							"raw": "{\n    \"name\": \"Somebody\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -426,7 +426,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/1?current_user_id=3",
+							"raw": "http://localhost:3000/users/1?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -438,8 +438,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "3"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -461,7 +461,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/users/2?current_user_id=2",
+							"raw": "http://localhost:3000/users/2?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -473,8 +473,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "2"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -512,7 +512,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 1,\n    \"chat_id\": 1\n}",
+							"raw": "{\n    \"chat_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -520,7 +520,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/memberships?current_user_id=1",
+							"raw": "http://localhost:3000/memberships?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -531,8 +531,8 @@
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "1"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -574,7 +574,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/memberships/7?current_user_id=3",
+							"raw": "http://localhost:3000/memberships/8?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -582,12 +582,12 @@
 							"port": "3000",
 							"path": [
 								"memberships",
-								"7"
+								"8"
 							],
 							"query": [
 								{
-									"key": "current_user_id",
-									"value": "3"
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
 								}
 							]
 						}
@@ -609,7 +609,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/memberships/2",
+							"raw": "http://localhost:3000/memberships/2?session_token=58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -618,6 +618,142 @@
 							"path": [
 								"memberships",
 								"2"
+							],
+							"query": [
+								{
+									"key": "session_token",
+									"value": "58889badc1f987def607e00578dc42f9467be20c52a646bcbb35f57f16baced7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sessions",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sessions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Hello, World\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sessions/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sessions",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sessions with password",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"name\": \"Somebody\",\n        \"password\": \"password\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sessions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/sessions/7?session_token=160546fea2b725186bc6ad34c5dafa4783787cf1dc04b213bf8fa09c28df9a15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sessions",
+								"7"
+							],
+							"query": [
+								{
+									"key": "session_token",
+									"value": "160546fea2b725186bc6ad34c5dafa4783787cf1dc04b213bf8fa09c28df9a15"
+								}
 							]
 						}
 					},
