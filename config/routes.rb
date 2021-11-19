@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:create, :destroy]
   resources :memberships
   resources :chats do
     resources :messages
