@@ -8,24 +8,32 @@
 
 # creating some users
 %w(Hugues Talia Naelie Kian).each do |name|
-  User.create(name: name, password: SecureRandom.hex(10))
+  puts "creating user #{name} (password: password)"
+  User.create(name: name, password: "password")
+  # User.create(name: name, password: SecureRandom.hex(10))
 end
 
 # creating some chats
 %w(Development Fun Random).each do |name|
   # creating a chat, will also create a membership for the chat owner
   # `after_create`
-  Chat.create(name: name, user: User.all.sample)
+  user = User.all.sample
+  puts "creating chat's #{name} owned by #{user.name}"
+  Chat.create(name: name, user: user)
 end
 
 # creating some messages
 ['Hello, world', "What's up", "How are you?", "Coming tonight?", "No", "Yes"].each do |text|
-  Message.create(chat: Chat.all.sample, user: User.all.sample, text: text)
+  chat = Chat.all.sample
+  user = User.all.sample
+  puts "creating message #{text} in chat #{chat.name} by #{user.name}"
+  Message.create(chat: chat, user: user, text: text)
 end
 
 # ensure that each chat's message owner have a membership
 Message.all.each do |message|
   # https://apidock.com/rails/v4.0.2/ActiveRecord/Relation/find_or_create_by
   # Finds the first record with the given attributes, or creates a record with the attributes if one is not found
+  puts "ensuring user #{message.user.name} has a membership in chat #{message.chat.name}"
   Membership.find_or_create_by(chat_id: message.chat_id, user_id: message.user_id, status: 'accepted')
 end
